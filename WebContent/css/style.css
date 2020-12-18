@@ -1,0 +1,229 @@
+/* 
+    Created on : Dec 26, 2014, 6:05:28 PM
+    Author     : fatihsen
+*/
+
+/*CSS for the network Graph*/
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+  stroke-opacity: .6;
+  fill-opacity: 1.0;
+  font-size: 8px;
+  color: black;
+}
+
+.node.nodetext {
+    stroke: inherit;
+    font-weight: bold;
+    fill:black;/*#2B8CBE;*/
+
+}
+
+.link {
+  fill: none;
+  stroke: #999;
+  stroke-opacity: .6;
+  
+}
+
+path.link {
+  fill: none;
+  stroke: #999;
+  stroke-opacity: .6;
+  
+  
+}
+
+.linklabelholder{
+    
+    font-size: 8px;
+}
+
+path.link.linktext{
+    //stroke: inherit;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+line.link.linktext{
+    //stroke: inherit;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+#btnFSA{
+   width:100%;  
+   height:40px;
+}
+
+
+#btnFSA2{
+   width:100%;  
+    
+}
+
+.btnAlgorithm{
+    width:100%;  
+   height:40px;
+}
+
+
+body{
+    width:100%;
+    margin: auto;
+   
+   
+}
+
+/*CSS for the front end*/           
+#container {                
+    width:93%;/*1100px;*/    
+    margin:55px auto;
+    //margin: 0 auto;
+    /*margin-left: auto;
+    margin-right: auto;
+    /*background-color:  #7BCCC4;*/
+    /*vertical-align: top;   */    
+    
+}
+
+
+
+.headerContainer{
+    width: 100%;   
+    top:0px;
+    position: fixed;
+    
+}
+.header {
+    background:#fff;
+    width: 93%;/*1100px;*/
+    margin: 0 auto;
+    //border:1px solid;
+    height:55px;
+    /*float:left;*/    
+}
+/* ASP */
+/* a{
+    
+    text-decoration: none;
+    color:black;
+} */
+
+li{
+    float: left;
+    list-style: none;
+    margin-left: 15px;
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+
+.nav{  
+    float:right;
+}
+
+.logo {   
+   float:left;
+   font-family: cursive;
+   font-size: 15px;
+   //background-image: url("../images/mercek_8_2.jpg"); 
+ 
+   height: 55px;
+}
+
+.loginBox{
+    /* border: #000; */
+    /* border-style: solid; */
+    /* width: 100%; */
+    /* margin: auto;*/
+    vertical-align: middle;
+   
+    padding-bottom: 50px;
+}
+
+.slogan{
+    
+    font-family: cursive;
+    font-size: 28px;
+    margin: 10px;
+    margin-left: 120px;
+    color: red;
+    text-align: center;
+    float:left;
+}
+
+.sloganLogin{
+    
+    font-family: cursive;
+    font-size: 28px;
+    
+    margin-left: 10px;
+   
+    color: red;
+    
+}
+
+#menu {                
+    background-color: #fff;
+    height: 1000px;
+    width: 17%;
+    
+    color:black;//#fff;
+    padding-right: 5px;
+    border:1px solid;
+    vertical-align: top;
+    display: inline-block;
+}
+
+#content {
+  /*background-color: #EEEEEE;   */ 
+  background-color: #F0F0F0;
+  width:82%;
+  height: 1000px;  
+  text-align: center;
+  /*overflow:hidden;*/
+  border:1px solid;
+  
+  float: left;
+}
+
+.visFeatures{
+    background-color:#EEEEEE;
+    float:left;
+    border-color:#000;
+    border-width: 1px;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.visItem{                
+    float:left;
+    /*margin-right:8px;*/
+    margin-left: 15px;
+}
+
+.d3Style{              
+    width:100%;
+    margin: 0px;
+
+}
+
+#footer {
+    background-color: #F0F0F0;
+    clear: both;
+    text-align: center;
+    color:#000;
+    border:1px solid;             
+}
+
+.graphInfoItems{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100%;
+    float:left;
+    text-align: left;
+}

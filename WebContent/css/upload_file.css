@@ -1,0 +1,42 @@
+.formBox {
+	display: block;
+	margin: 5px;
+	background: #eee;
+	padding: 15px;
+        height: 240px;
+        border-radius: 1px;
+        border-color: #000;
+}
+
+.formBox2 {
+	display: block;
+	margin: 5px;
+	background: #eee;
+	padding: 15px;
+        margin-top: 75px;
+        height: 240px;
+        border-radius: 1px;
+        border-color: #000;
+}
+
+#progressbox {
+	position: relative;
+	width: 100%;//170px;
+	border: 1px solid #ddd;
+	padding: 1px;
+	border-radius: 3px;
+}
+
+#progressbar {
+	background-color: lightblue;
+	width: 0%;
+	height: 20px;
+	border-radius: 4px;
+}
+
+#percent {
+	position: absolute;
+	display: inline-block;
+	top: 3px;
+	left: 48%;
+}

@@ -1,0 +1,89 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 17, 2015, 8:44:34 AM
+    Author     : fatihsen
+*/
+
+body{
+    width:100%;
+    margin: auto;
+   
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    
+}
+.header {
+    background:#F0F0F0;
+    width: 100%;
+    top:0;
+    position: fixed;
+    
+}
+
+a{
+    
+    text-decoration: none;
+    color:black;
+}
+
+li{
+    float: left;
+    list-style: none;
+    margin-left: 15px;
+    padding-top: 10px;
+}
+
+.logo {
+    
+   float:left;
+   font-family: cursive;
+   font-size: 15px;
+   background-image: url("../images/mercek_8_2.jpg"); 
+   width: 100px;
+   height: 55px;
+}
+
+.contentContainer{
+    width: 100%;
+    margin: 0 auto;
+    
+}
+
+.content {
+    background-color: #F0F0F0;
+    width:81%;
+    float:left;
+}
+
+.menu{
+    
+    float:right;
+    width: 17%;
+   
+    background-color: #fff;
+    height: 1000px;
+}
+
+.nav{
+    
+    float:right;
+}
+
+
+.footer {
+    background-color: #CDC0B0;/*#C0C0C0*/;
+    clear: both;
+    text-align: center;
+    background: #fff;
+    color:#fff;
+    border:1px solid;
+    border-radius: 25px 25px;                
+}
+

@@ -1,0 +1,58 @@
+/*
+ * Styles for FSA Application Login Page 
+ */
+
+@charset "UTF-8";
+
+.container {
+  display: flex;
+}
+
+.header {
+  align-content: center;
+}
+
+#loginPageContainer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#loginContainer {
+  width: 35%;
+  flex-direction: column;
+  margin-top: 200px;
+  border: #000 solid;
+  border-radius: 8px;
+}
+
+#loginHeader {
+  flex-direction: row;
+}
+
+#loginImage {
+  flex-shrink: 2.25;
+}
+
+#loginImage img {
+  max-width: 100%;
+}
+
+#loginTitle {
+  flex-shrink: 1;
+}
+
+#loginFormContainer {
+  justify-content: center;
+  margin: 5px 0px 20px 0px;
+}
+
+#loginForm {
+  text-align: center;
+}
+
+.header h1 {
+  font-family: 'Catamaran', sans-serif;
+  font-variant: small-caps;
+  margin: auto;
+}

@@ -1,0 +1,22 @@
+/*
+ * Styles for D3v4 version of Merjek 
+ */
+ 
+
+/* D3.js */
+.svg-container {
+  margin: 0px;
+  background-color: #eee;
+}
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle {
+  fill-opacity: 1;
+  stroke: #fff;
+  stroke-width: 1.5;
+  stroke-opacity: 0.6;
+}
