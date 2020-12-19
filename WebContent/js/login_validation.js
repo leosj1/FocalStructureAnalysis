@@ -79,7 +79,7 @@ $(function() {
 		}
 
 	});
-//
+
 
 	$('#login_form').submit( function(e) {
 		e.preventDefault();
@@ -88,19 +88,12 @@ $(function() {
 		if(email=="" || password=="" ){
 			return false;
 		}
-		
-		//console.log("clicked");
 		$("#loggin").html('<button type="submit" class="btn btn-primary loginformbutton" disabled style="background: #28a745;">Logging in ...</button>');
-		
 		var btntext = '<button type="submit" class="btn btn-primary loginformbutton mt10" style="background: #28a745;">Login</button>';
-	   
-		
-		
 		var password = $("#password").val(); //CODE REVIEW: why do we have password variable here? - wale
 			$.ajax({
 				url: baseurl+'login',    //Please note the baseurl here is the deployment url not to be confused with the elastic index
 				method: 'POST',
-				//dataType: 'json',
 				data: {
 					email: $("input#username").val(),
 					password: $("input#password").val(),
@@ -108,23 +101,25 @@ $(function() {
 					login: "yes",
 				},
 				error: function(response)
-				{						
-//					console.log(response);
+				{	
 					$("#error_message-box").html('Invalid email/password');
 					$("#loggin").html(btntext);
 		
 				},
 				success: function(response)
 				{       
-					//console.log(response);
+					
 					var login_status = response;//.responseText;
 					// console.log(login_status);
+					console.log(response);
+					alert(response)
 					if(login_status === "invalid"){
 						$("#error_message-box").html('Invalid email/password');
 						$("#loggin").html(btntext);
 					}else if(login_status == "success"){
 						toastr.success('Login successfull!','Success');
 						// set a cookie for logged in user
+						
 						Cookies.set('loggedinstatus', true , {path : '/'});
 						window.location.href = baseurl+"index.jsp";
 					}else if(login_status == "confirmed"){

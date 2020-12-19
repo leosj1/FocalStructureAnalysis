@@ -1,10 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
  <%@page import="myclasses.NetworkLoader"%>
+ <%@page import="util.*"%>
+ <%@page import="authentication.*"%>
 <%@ page import="java.io.*" %>
+<%@page import="java.util.*"%>
 <%@ page import="myclasses.NetworkGraph"%>
 <%@ page import="myclasses.NetworkLoader"%>
 <%@ page import="myclasses.FocalStructures"%>
+<%@ page import="edu.ualr.fsa.*"%>
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 
@@ -74,14 +78,20 @@
 
   <body>
     <%-- TODO restore Authentication --%>
-    <%-- <%
-        String a = "";
-        if(session.getAttribute("username")==null)
-            response.sendRedirect("login.html");
-        else
-            a = session.getAttribute("username").toString();
-        //out.println("Hello  "+a);
-    %> --%>
+     <%
+     Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
+     DbConnection dbconn = new DbConnection();
+     List<ArrayList<String>> userinfo = dbconn.query("SELECT * FROM usercredentials where Email = '"+email+"'");
+     Hashtable<Integer, String> networkIds = new Hashtable<>();
+     if (userinfo.size()<1) {
+     	//response.sendRedirect("dashboard.jsp");
+     }
+     else{
+    	 System.out.println("");
+    	 networkIds = (Hashtable<Integer, String>)session.getAttribute("networkIds");
+     }
+     
+    %> 
 
     <%-- Logo, Title, and links --%>
     <div class="headerContainer">
@@ -191,6 +201,19 @@
             <input type="checkbox" id="chkEdgeWeight" name="chkEdgeWeight">
             Show Weight
           </div>
+          
+          <div id="divColor" class="visItem">
+            <input type="checkbox" id="chkNodeColor" name="chkNodeColor">
+            Hide FSA Colors
+          </div>
+          <div id="divLink" class="visItem">
+            <input type="checkbox" id="chkLinkWidth" name="chkLinkWidth">
+            Link Width Proportional to Weight
+          </div>
+          <div id="divNode" class="visItem">
+            <input type="checkbox" id="chkNodeRadius" name="chkNodeRadius">
+            Node Size Proportional to Degree
+          </div>
 
           <!--<div id="divDirectedNetwork" class="visItem">
             <input type="checkbox" id="chkDirectedNetwork"
@@ -238,12 +261,19 @@
               Select an existing network!
             </div>
 
-            <select id="network_file" name="network_file" style="width:100%;">
-              <option value="0" selected="true">Select a network</option>
-              <option value="test.csv">test.csv</option>
-              <option value="test.gdf">test.gdf</option>
+            <!-- <select id="network_file" name="network_file" style="width:100%;"> -->
+            <select id="networkList" name="networkList">
+              <%
+              for(Integer x: networkIds.keySet()){
+            	  request.setAttribute("networkId", x);
+            	%>
+            	<option value="<%=x%>"><%= networkIds.get(x)%></option>
+              <%}
+              %>
+              
+              <!-- <option value="test.gdf">test.gdf</option>
               <option value="ecoli.gdf">E.coli Metabolic Network</option>
-              <!--<option value="Mutlu_network.gdf">Protein Complexes</option>-->
+              <option value="Mutlu_network.gdf">Protein Complexes</option>
               <option value="zachary-karate.gdf">Zachary's Karate Club</option>
               <option value="polbooks.gdf">Books about US politics</option>
               <option value="BlogTagsNetwork.gdf">Blog Tags</option>
@@ -269,7 +299,7 @@
               <option value="10_27.csv">Saudi Women OctDriving Campaign-Day 27th</option>
               <option value="10_28.csv">Saudi Women OctDriving Campaign-Day 28th</option>
               <option value="10_29.csv">Saudi Women OctDriving Campaign-Day 29th</option>
-              <option value="10_30.csv">Saudi Women OctDriving Campaign-Day 30th</option>
+              <option value="10_30.csv">Saudi Women OctDriving Campaign-Day 30th</option> -->
             </select>
 
               <%-- TODO: This button seems to popup the filename of the selected dataset on the server  --%>

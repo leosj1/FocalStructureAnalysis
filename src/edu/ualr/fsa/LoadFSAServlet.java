@@ -55,7 +55,8 @@ public class LoadFSAServlet extends HttpServlet {
         
         // Data Accessor Object
         // TODO instantiate in doGet or as init()? - see FSAServlet.java 
-        NetworkDAO networkDAO = new NetworkDAO(ds);
+//        NetworkDAO networkDAO = new NetworkDAO(ds);
+        NetworkDAO networkDAO = new NetworkDAO();
 
         try (Connection connection = ds.getConnection();) {
             

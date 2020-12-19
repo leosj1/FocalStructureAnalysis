@@ -1,6 +1,7 @@
 package edu.ualr.fsa;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Hashtable;
 
@@ -11,13 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.ualr.fsa.NetworkDAO;
 
 /**
  * Servlet implementation class FSAServlet
  */
-@WebServlet("")
+@WebServlet("/fsa_servlet")
 public class FSAServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -25,22 +27,30 @@ public class FSAServlet extends HttpServlet {
 	private DataSource ds;
 	private NetworkDAO networkDAO;
 
-	@Override
-	public void init() {
-		networkDAO = new NetworkDAO(ds);
-	}
+//	@Override
+//	public void init() {
+//		networkDAO = new NetworkDAO(ds);
+//	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		try {
 			try {
 //				String owner = request.getUserPrincipal().getName();
-				String owner = "seun";
-
+//				String owner = "seun";
+				
+				HttpSession session = request.getSession();
+				String owner = session.getAttribute("username").toString();
+				
+				NetworkDAO networkDAO = new NetworkDAO();
+				
 				Hashtable<Integer, String> networkHash = networkDAO.getNetworks(owner);
 				request.setAttribute("networkIds", networkHash);
+				session.setAttribute("networkIds", networkHash);
+				PrintWriter pww = response.getWriter();
+				pww.write("success");
 			} catch (SQLException e) {
 				throw new ServletException("Issue contacting the database.", e);
 			}
@@ -49,18 +59,13 @@ public class FSAServlet extends HttpServlet {
 		}
 
 		// Unified JSP view
-		request.getRequestDispatcher("/fsa_index.jsp").forward(request, response);
-//		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		//request.getRequestDispatcher("/index.jsp").forward(request, response);
 
-		// Upload page only for unauthenticated user
-//		 if (request.isUserInRole("auth")) {
-//		 request.getRequestDispatcher("/WEB-INF/fsa_index.jsp").forward(request,
-//		 response);
-//		 } else {
-//		 request.getRequestDispatcher("/web/WEB-INF/index.jsp").forward(request,
-//		 response);
-//		 }
-
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("");
 	}
 	
 }

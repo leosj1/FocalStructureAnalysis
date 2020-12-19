@@ -15,6 +15,7 @@ import java.sql.*;
 import javax.sql.DataSource;
 
 import au.com.bytecode.opencsv.CSVReader;
+import authentication.DbConnection;
 
 //import com.opencsv.CSVReader;
 
@@ -32,11 +33,13 @@ import javax.naming.InitialContext;
  */
 public class NetworkDAO {
 
-	private DataSource ds;
-
-	public NetworkDAO(DataSource ds) {
-		this.ds = ds;
-	}
+//	private DataSource ds;
+//
+//	public NetworkDAO(DataSource ds) {
+//		this.ds = ds;
+//	}
+	
+	DbConnection ds = new DbConnection();
 
 	// Accesses all Networks in MySQL database configured as JNDI resource and
 	// converts to List<String>
