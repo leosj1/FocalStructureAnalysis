@@ -38,7 +38,7 @@
   </security-constraint>
 
   <!-- Uploading endpoint blocked for demo role -->
-  <security-constraint>
+  <!-- <security-constraint>
     <web-resource-collection>
       <web-resource-name>Analytics Page</web-resource-name>
       <url-pattern>/upload-csv</url-pattern>
@@ -46,7 +46,7 @@
     <auth-constraint>
       <role-name>auth</role-name>
     </auth-constraint>
-  </security-constraint>
+  </security-constraint> -->
 
   <!-- Exception to login constraint for login form static files -->
   <security-constraint>

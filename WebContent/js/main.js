@@ -7,11 +7,10 @@
  /**
   * UI & Visualization Section
   */
-
+var baseurl = app_url;
 
 // Do after page load
 $(document).ready(function(){
-	alert('here22');
   // Declare all program variables
   var width = 700,
       height = 900,
@@ -1094,28 +1093,40 @@ $("#network_file_db").change(function(){
     //get only the filename.extension from the path
     nFile = nFile.split('\\').pop().split('/').pop();
     processed = false;
-    $("#d3vis").empty();
-
-    var req = $.ajax({
+    //$("#d3vis").empty();
+    
+    alert('getting--');
+    alert( nFile)
+    $.ajax({
       type: "GET",
       url: "ajaxrequest.jsp?network_file_uploaded="+nFile+"&process=false",
+      //url: baseurl+"upload-csv",
       contentType: "application/json; charset=utf-8",
       dataType: "json",
+      /*data: {
+    	  networkName: nFile,
+    	  process:"False",
+    	  ownerName:"seun"
+		},*/
       success: function(response){
         graph = response;
         //$("#fsa_strategy").prop("disabled",false);
       },
       error: function(response){
-
+    	  alert('uploading error')
+    	  //console.log('uploading error', response)
         $("#divVisualFeatures").hide();
         $("#divGraphInfo").html(response.responseText);
 
       }
 
      });
-
+    
+   
+    
+    
     $.when(req).done(function(){
-
+    	alert('uploading 3')
       applyd3dotjs(graph, processed);
 
       $('#divVisualFeatures').show();

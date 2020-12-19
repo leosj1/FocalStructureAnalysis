@@ -7,7 +7,12 @@
     Author: Seun Johnson oljohnson@ualr.edu MS Information Science 2021
     License: MIT
 --%>
-
+<%
+Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
+if(email != null){
+	//response.sendRedirect("index.jsp");
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -4,7 +4,7 @@
  */
 
 $(document).ready(function() {
-    
+    alert('csv_loader')
     // FIXME Include proper user guidance for CSV format
     var csvFormatIcon = document.getElementById("csvFormatIcon");
     

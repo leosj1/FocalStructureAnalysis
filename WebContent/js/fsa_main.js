@@ -5,7 +5,7 @@
 
 
 $(document).ready(function() {
-alert('here');
+//alert('here');
   /**
    * Page defaults
    */
@@ -109,7 +109,7 @@ alert('here');
 
               error: function(response) {
                 console.log(response);
-                alert("Error Loading FSA");
+                alert("Error Loading FSA, Please login");
               },
 
               success: function(response) {
