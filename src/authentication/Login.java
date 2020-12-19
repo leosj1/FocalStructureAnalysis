@@ -21,7 +21,7 @@ import authentication.DbConnection;
  * 
  * Servlet implementation class Login
  * 
- * @author Adewale
+ * @author Oluwaseun
  * 
  */
 /* login servlet */
