@@ -207,7 +207,6 @@
     <div id="footer">
       Copyright © Team COSMOS at University of Arkansas at Little Rock
     </div>
-here
     <!-- Custom JS -->
     <script src="js/fsa_main.js" charset="utf-8"></script>
     <c:if test="${pageContext.request.isUserInRole('auth')}">

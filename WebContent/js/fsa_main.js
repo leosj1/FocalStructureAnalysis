@@ -213,7 +213,6 @@ $(document).ready(function() {
 
 
     function renderGraph(nodeData, linkData, colorScale) {
-        
         // Clear div
         $(div).empty();
       
@@ -238,6 +237,8 @@ $(document).ready(function() {
         .attr("class", "networkBase");
 
     // Draw links first so they're underneath nodes
+    //alert('graph')
+    
     var links = gNetworkBase.append("g")
         .attr("class", "links")
       .selectAll("line")  // SVG native element: line
@@ -268,6 +269,7 @@ $(document).ready(function() {
         });
 
     // Draw nodes on top of links
+    console.log("data", nodeData)
     var nodes = gNetworkBase.append("g")
         .attr("class", "nodes")
       .selectAll("circle")  // SVG native element: circle

@@ -105,12 +105,12 @@ public class UploadCSVServlet extends HttpServlet {
             // Validate all lines in file with Regex
             List<String> networkLines = Files.readAllLines(networkFilePath);  // Returns all lines with line endings stripped
             
-            for (String line : networkLines) {
-                // See upload_csv.js for equivalent Regex (but including line ending checking)
-                if(!Pattern.matches("^(?:[\\w\\s-\\.@]+,[\\w\\s-\\.@]+(?:,(?:\\d*\\.)?\\d+)?)+$", line)) {
-                    throw new IOException("Incorrect CSV Format");
-                }
-            }
+//            for (String line : networkLines) {
+//                // See upload_csv.js for equivalent Regex (but including line ending checking)
+//                if(!Pattern.matches("^(?:[\\w\\s-\\.@]+,[\\w\\s-\\.@]+(?:,(?:\\d*\\.)?\\d+)?)+$", line)) {
+//                    throw new IOException("Incorrect CSV Format");
+//                }
+//            }
             
             
             // INSERT into database

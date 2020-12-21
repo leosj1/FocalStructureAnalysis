@@ -20,8 +20,6 @@
 <head>
 <!-- For asynchronous browser based operations-->
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<!-- For visualization -->
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <!-- For the file uploader -->
 <script src="http://malsup.github.com/jquery.form.js"></script>
 
@@ -62,24 +60,26 @@
     </script>
 
 <!-- D3.js -->
-<script src="https://d3js.org/d3.v4.min.js"
-	integrity="sha256-hYXbQJK4qdJiAeDVjjQ9G0D6A0xLnDQ4eJI9dkm7Fpk="
-	crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v4.min.js"
+            integrity="sha256-hYXbQJK4qdJiAeDVjjQ9G0D6A0xLnDQ4eJI9dkm7Fpk="
+            crossorigin="anonymous">
     </script>
-
-<!-- D3.js Fallback to Local -->
-<script>window.d3 || document.write(
+    
+    <!-- D3.js Fallback to Local -->
+    <script>window.d3 || document.write(
       '<script src="js/d3.v4.min.js" ' +
         'integrity="sha256-hYXbQJK4qdJiAeDVjjQ9G0D6A0xLnDQ4eJI9dkm7Fpk=" ' +
         'crossorigin="anonymous">' +
       '<\/script>')
     </script>
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/upload_file.css" />
-<link rel="stylesheet" href="css/loadspinner.css" />
-<script>
-    //put the google analytics script here!
-    </script>
+    
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/upload_file.css"/>
+    <link rel="stylesheet" href="css/loadspinner.css"/>
+    <link rel="stylesheet" href="css/fsa_style.css"/>
+  </head>
 </head>
 
 <body>
@@ -376,10 +376,15 @@
               <input name="networkName" type="text" maxlength="30" placeholder="Name your Network" required />
               <input name="ownerName" type="hidden" value="<%=username%>"/>
               <input id="filePicker" name="userCSV" type="file" accept="text/csv" required />
-              <label for="uploadProgress" id="uploadProgressLabel"></label>
-              <progress id="uploadProgress" value=0 max=1></progress>
+              <!-- <label for="uploadProgress" id="uploadProgressLabel"></label>
+              <progress id="uploadProgress" value=0 max=1></progress> -->
+              
               <input id="uploadSubmit" type="submit" value="Upload CSV" />
-
+					<div id="progressbox" style="margin: 6px; margin-left: 1px;">
+						<div id="progressbar"></div>
+						<div id="percent">0%</div>
+						<div id="message"></div>
+					</div>
 					<%-- TODO: repeated buttons seem to be used differently in main.js --%>
 					<input id="btnFSA2" type="button" value="Apply FSA" /> <input
 						id="btnClusteringCoefficient2" type="button" class="btnAlgorithm"
@@ -406,7 +411,8 @@
 </body>
 
 <!-- TODO Remove Temp Custom JS -->
-<script src="js/fsa_main.js" charset="utf-8"></script>
 <script src="js/main.js" charset="utf-8"></script>
+<script src="js/fsa_main.js" charset="utf-8"></script>
+
 <%-- <script src="js/db_test.js" charset="utf-8"></script> --%>
 </html>

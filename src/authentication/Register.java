@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -98,16 +100,27 @@ public class Register extends HttpServlet {
 
 			} else {
 				String digest = dbinstance.md5Funct(password);
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+				LocalDateTime now = LocalDateTime.now();  
 				String query_string = "insert into usercredentials (UserName, Email, Password, MessageDigest, user_type,first_name,last_name,phone_number,address,profile_picture,last_updated,added_by,date_added ) VALUES ('"
 						+ email + "','" + email + "','" + digest + "','" + digest + "','" + type + "','" + name
-						+ "','','','','" + picture + "','','','')";
+						+ "','','','','" + picture + "','','','"+dtf.format(now)+"')";
 				boolean inserted = dbinstance.updateTable(query_string);
 				session.setAttribute("username", email);
 				if (inserted) {
 					if (signin.equals("yes")) {
 						session.setAttribute("email", email);
 					}
+					String[] receivers = { email };
+					try {
+						Mailing m = new Mailing();
+						m.postMail(receivers, "FSA - Registration Successful", "Hello " + name
+								+ ", <br/><br/> You have been successfully registered on FSA. Kindly find your login details below:<br/><br/> <b>Username/Email: "
+								+ email + "</b>. <br/>Password: " + digest
+								+ ". <br/><br/>Kindly login at <a href='"+m.hm.get("app_url")+"login.jsp'> FSA </a><br/><br/> Thanks for using FSA");
+					} catch (Exception e) {
 
+					}
 					response.setContentType("text/html");
 					pww.write("success");
 				} else {
@@ -118,7 +131,7 @@ public class Register extends HttpServlet {
 					String[] receivers = { email };
 					try {
 						Mailing m = new Mailing();
-						m.postMail(receivers, "Blogtrackers - Registration Successful", "Hello " + name
+						m.postMail(receivers, "FSA - Registration Successful", "Hello " + name
 								+ ", <br/><br/> You have been successfully registered on Blogtrackers. Kidly find your login details below:<br/><br/> <b>Username/Email"
 								+ email + "</b>. <br/>Password:" + password
 								+ ". <br/><br/>Kindly login at <a href='"+m.hm.get("app_url")+"login.jsp'> FSA </a><br/><br/> Thanks for using FSA");

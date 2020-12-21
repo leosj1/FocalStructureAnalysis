@@ -185,7 +185,7 @@ $(function() {
 						$("#error_message-box").html('Email is in use');
 						toastr.error('Email is in use','Error');
 					}else if(login_status == "success"){
-						toastr.success('Registration successfull!','Success');
+						toastr.success('Registration successful! An email has been sent or login with your current password','Success', { timeOut: 9500 });
 //						
 						$("#error_message-box").html("");
 						$("input#email").val("");
